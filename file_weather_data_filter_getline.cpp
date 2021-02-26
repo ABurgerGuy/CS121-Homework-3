@@ -35,6 +35,8 @@ int main(void)
 
 	ifstream infile;
 	ofstream outfile;
+	ofstream column5file;
+	
 
 	cout << "WEATHER STATION DATA" << endl
 		 << endl;
@@ -66,10 +68,26 @@ int main(void)
 		cout << "Output file opened." << endl;
 	}
 
+	column5file.open("D:/Code Repository/C-C++/Homework_3_CS121/weather_station_five_column.txt");
+	if (!column5file)
+	{
+		cout << "Unable to open the output file. " << endl;
+		//system("pause");
+		return (1);
+	}
+	else
+	{
+		cout << "Output column file opened." << endl;
+	}
+
+
 	cout << "Use the first line of the file to find the column positions. " << endl;
 	getline(infile, dataline);
 	outfile << dataline << endl;
 	cout << "Line 1: " << dataline << endl;
+
+	//TODO: implement what will be filled on first line of the new file
+	cout << "Column File Line 1: " << << endl;
 
 	// Use headers to fine max and min temp columns
 
@@ -126,8 +144,8 @@ int main(void)
 		// Test for bad data flag. If good data then write to new file.
 
 		if (tmax != -9999 && tmin != -9999 && prcp != -9999)
-			outfile
-				<< dataline << endl;
+			outfile << dataline << endl;
+
 		else
 			bad_records++;
 
