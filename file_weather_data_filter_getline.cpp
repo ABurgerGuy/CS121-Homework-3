@@ -16,7 +16,7 @@
 
 using namespace std;
 
-string centerText (string text, int size);
+string centerText(string text, int size);
 
 int main(void)
 {
@@ -39,13 +39,12 @@ int main(void)
 	ifstream infile;
 	ofstream outfile;
 	ofstream column5file;
-	
 
 	cout << "WEATHER STATION DATA" << endl
 		 << endl;
 	cout << "Open the data file." << endl
 		 << endl;
-	infile.open("D:/Code_Repository/C-C++/Homework_3_CS121/textFiles/AL_Weather_Station.txt");
+	infile.open("./textFiles/AL_Weather_Station.txt");
 
 	if (!infile)
 	{
@@ -58,7 +57,7 @@ int main(void)
 		cout << "Data file opened." << endl;
 	}
 
-	outfile.open("D:/Code_Repository/C-C++/Homework_3_CS121/textFiles/Filtered_AL_Weather_Station.txt");
+	outfile.open("./textFiles/Filtered_AL_Weather_Station.txt");
 
 	if (!outfile)
 	{
@@ -71,7 +70,7 @@ int main(void)
 		cout << "Output file opened." << endl;
 	}
 
-	column5file.open("D:/Code_Repository/C-C++/Homework_3_CS121/textFiles/weather_station_five_column.txt");
+	column5file.open("./textFiles/weather_station_five_column.txt");
 	if (!column5file)
 	{
 		cout << "Unable to open the output file. " << endl;
@@ -83,12 +82,10 @@ int main(void)
 		cout << "Output column file opened." << endl;
 	}
 
-
 	cout << "Use the first line of the file to find the column positions. " << endl;
 	getline(infile, dataline);
 	outfile << dataline << endl;
 	cout << "Line 1: " << dataline << endl;
-
 
 	// Use headers to fine max and min temp columns
 
@@ -121,11 +118,10 @@ int main(void)
 	{
 		cout << "DATE begins at column : " << pos_date << endl;
 	}
-	
 
-		//TODO: implement what will be filled on first line of the new file
-	cout << "Column File Line 1: " << setw(50) << centerText("STATION",50) << setw(10) << centerText("DATE",8) << endl;
-	column5file << left << setw(50) << centerText("STATION",50) << setw(10) << centerText("DATE",8) << endl;
+	//TODO: implement what will be filled on first line of the new file
+	cout << "Column File Line 1: " << setw(50) << centerText("STATION", 50) << setw(10) << centerText("DATE", 8) << endl;
+	column5file << left << setw(50) << centerText("STATION", 50) << setw(10) << centerText("DATE", 8) << endl;
 
 	cout << "Read the second line from the file - dashes. " << endl;
 	getline(infile, dataline);
@@ -159,7 +155,7 @@ int main(void)
 		if (tmax != -9999 && tmin != -9999 && prcp != -9999)
 		{
 			outfile << dataline << endl;
-			column5file << setw(50) << left << centerText(station,50) << date_s << endl;
+			column5file << setw(50) << left << centerText(station, 50) << date_s << endl;
 		}
 		else
 			bad_records++;
@@ -178,34 +174,32 @@ int main(void)
 	return 0;
 }
 
-
-
 //center text function
 //this also removes all the spaces before other characters
-string centerText (string text, int size)
+string centerText(string text, int size)
 {
-    string centeredString = "";
+	string centeredString = "";
 	bool charFound = false;
 	int centerSize = size;
 
-		for (int i = 0; i < centerSize; i++)
+	for (int i = 0; i < centerSize; i++)
+	{
+		if (text[i] != ' ')
 		{
-			if (text[i] != ' ')
-			{
-				charFound = true;
-			}
-			if (charFound == true)
-			{
-				text = text.substr(i);
-				break;
-			}
+			charFound = true;
 		}
-
-        for(int j=0; j<(centerSize-(text.length()/sizeof(text[0])))/2; j++)
+		if (charFound == true)
 		{
-        	centeredString += " ";  
-        }
-		centeredString += text;
-		
-        return centeredString;
+			text = text.substr(i);
+			break;
+		}
+	}
+
+	for (int j = 0; j < (centerSize - (text.length() / sizeof(text[0]))) / 2; j++)
+	{
+		centeredString += " ";
+	}
+	centeredString += text;
+
+	return centeredString;
 }
