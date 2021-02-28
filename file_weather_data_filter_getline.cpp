@@ -16,13 +16,16 @@
 
 using namespace std;
 
+string centerText (string text);
+
 int main(void)
 {
 	// Variables
-
+	string centeredStation = "";
 	string dataline = "";
 	string station = "";
 	string tmax_s = "", tmin_s = "", prcp_s = "";
+	string date_s = "";
 
 	unsigned int pos_station_name = 0;
 	unsigned int pos_date = 0;
@@ -42,7 +45,7 @@ int main(void)
 		 << endl;
 	cout << "Open the data file." << endl
 		 << endl;
-	infile.open("C:/Users/Grey McDermitt/Desktop/Homework 3 CS121/CS121-Homework-3/AL_Weather_Station.txt");
+	infile.open("D:/Code_Repository/C-C++/Homework_3_CS121/textFiles/AL_Weather_Station.txt");
 
 	if (!infile)
 	{
@@ -55,7 +58,7 @@ int main(void)
 		cout << "Data file opened." << endl;
 	}
 
-	outfile.open("C:/Users/Grey McDermitt/Desktop/Homework 3 CS121/CS121-Homework-3/Filtered_AL_Weather_Station.txt");
+	outfile.open("D:/Code_Repository/C-C++/Homework_3_CS121/textFiles/Filtered_AL_Weather_Station.txt");
 
 	if (!outfile)
 	{
@@ -68,7 +71,7 @@ int main(void)
 		cout << "Output file opened." << endl;
 	}
 
-	column5file.open("D:/Code Repository/C-C++/Homework_3_CS121/weather_station_five_column.txt");
+	column5file.open("D:/Code_Repository/C-C++/Homework_3_CS121/textFiles/weather_station_five_column.txt");
 	if (!column5file)
 	{
 		cout << "Unable to open the output file. " << endl;
@@ -86,8 +89,6 @@ int main(void)
 	outfile << dataline << endl;
 	cout << "Line 1: " << dataline << endl;
 
-	//TODO: implement what will be filled on first line of the new file
-	cout << "Column File Line 1: " << << endl;
 
 	// Use headers to fine max and min temp columns
 
@@ -110,10 +111,21 @@ int main(void)
 	}
 
 	pos_prcp = dataline.find("PRCP");
-	if (pos_station_name <= dataline.length())
+	if (pos_prcp <= dataline.length())
 	{
 		cout << "PRCP begins at column: " << pos_prcp << endl;
 	}
+
+	pos_date = dataline.find("DATE");
+	if (pos_date)
+	{
+		cout << "DATE begins at column : " << pos_date << endl;
+	}
+	
+
+		//TODO: implement what will be filled on first line of the new file
+	cout << "Column File Line 1: " << setw(50) << centerText("STATION") << setw(10) << centerText("DATE") << endl;
+	column5file << setw(50) << centerText("STATION") << setw(10) << centerText("DATE") << endl;
 
 	cout << "Read the second line from the file - dashes. " << endl;
 	getline(infile, dataline);
@@ -132,6 +144,7 @@ int main(void)
 		tmin_s = dataline.substr(pos_tmin, 5);
 		station = dataline.substr(pos_station_name, 50);
 		prcp_s = dataline.substr(pos_prcp, 5);
+		centeredStation = centerText(station);
 		// To convert the string types to int do this
 
 		tmax = stof(tmax_s); // Convert string tmax_s to float tmax
@@ -144,8 +157,10 @@ int main(void)
 		// Test for bad data flag. If good data then write to new file.
 
 		if (tmax != -9999 && tmin != -9999 && prcp != -9999)
+		{
 			outfile << dataline << endl;
-
+			column5file << setw(50) <<centeredStation <<endl;
+		}
 		else
 			bad_records++;
 
@@ -154,10 +169,43 @@ int main(void)
 	// Close the files
 	infile.close();
 	outfile.close(); // NOTE: This program did not write any data to the output file
+	column5file.close();
 
 	cout << "There were " << bad_records << " bad records for tmax and tmin." << endl;
 
 	cout << "\n\n";
 	//system("pause");
 	return 0;
+}
+
+
+
+//center text function
+//this also removes all the spaces before other characters
+string centerText (string text)
+{
+    string centeredString = "";
+	bool charFound = false;
+	int centerSize = 50;
+
+		for (int i = 0; i < centerSize; i++)
+		{
+			if (text[i] != ' ')
+			{
+				charFound = true;
+			}
+			if (charFound == true)
+			{
+				text = text.substr(i);
+				break;
+			}
+		}
+
+        for(int j=0; j<(centerSize-(text.length()/sizeof(text[0])))/2; j++)
+		{
+        	centeredString += " ";  
+        }
+		centeredString += text;
+		
+        return centeredString;
 }
