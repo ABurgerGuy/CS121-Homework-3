@@ -16,7 +16,7 @@
 
 using namespace std;
 
-string centerText (string text);
+string centerText (string text, int size);
 
 int main(void)
 {
@@ -124,8 +124,8 @@ int main(void)
 	
 
 		//TODO: implement what will be filled on first line of the new file
-	cout << "Column File Line 1: " << setw(50) << centerText("STATION") << setw(10) << centerText("DATE") << endl;
-	column5file << setw(50) << centerText("STATION") << setw(10) << centerText("DATE") << endl;
+	cout << "Column File Line 1: " << setw(50) << centerText("STATION",50) << setw(10) << centerText("DATE",8) << endl;
+	column5file << left << setw(50) << centerText("STATION",50) << setw(10) << centerText("DATE",8) << endl;
 
 	cout << "Read the second line from the file - dashes. " << endl;
 	getline(infile, dataline);
@@ -140,11 +140,11 @@ int main(void)
 
 		// Read tmax and tmin as strings
 		//cout << station << endl;
+		date_s = dataline.substr(pos_date, 8);
 		tmax_s = dataline.substr(pos_tmax, 5);
 		tmin_s = dataline.substr(pos_tmin, 5);
 		station = dataline.substr(pos_station_name, 50);
 		prcp_s = dataline.substr(pos_prcp, 5);
-		centeredStation = centerText(station);
 		// To convert the string types to int do this
 
 		tmax = stof(tmax_s); // Convert string tmax_s to float tmax
@@ -159,7 +159,7 @@ int main(void)
 		if (tmax != -9999 && tmin != -9999 && prcp != -9999)
 		{
 			outfile << dataline << endl;
-			column5file << setw(50) <<centeredStation <<endl;
+			column5file << setw(50) << left << centerText(station,50) << date_s << endl;
 		}
 		else
 			bad_records++;
@@ -182,11 +182,11 @@ int main(void)
 
 //center text function
 //this also removes all the spaces before other characters
-string centerText (string text)
+string centerText (string text, int size)
 {
     string centeredString = "";
 	bool charFound = false;
-	int centerSize = 50;
+	int centerSize = size;
 
 		for (int i = 0; i < centerSize; i++)
 		{
