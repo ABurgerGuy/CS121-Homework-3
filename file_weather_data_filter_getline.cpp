@@ -18,6 +18,7 @@ using namespace std;
 
 string centerText(string text, int size);
 string centerText(int text, int size);
+string paddingZerosStr(int number, int padding);
 
 int main(void)
 {
@@ -126,7 +127,7 @@ int main(void)
 
 	//TODO: implement what will be filled on first line of the new file
 	cout << "Column File Line 1: " << setw(50) << centerText("STATION", 50) << setw(10) << centerText("DATE", 8) << endl;
-	column5file << left << setw(50) << centerText("STATION", 50) << setw(13) << centerText("DATE", 14) <<
+	column5file << left << setw(52) << centerText("STATION", 50) << setw(13) << centerText("DATE", 10) <<
 	setw(9) << centerText("PRCP",8) << setw(9) << centerText("TMAX",4) << setw(10) << centerText("TMIN",5) << endl;
 
 	cout << "Read the second line from the file - dashes. " << endl;
@@ -154,8 +155,8 @@ int main(void)
 		prcp = stof(prcp_s);
 		year = stoi(date_s.substr(0,4));
 		month = stoi(date_s.substr(4,2));
-		day = stoi(date_s.substr(7,2));
-		date_s = to_string(year) + ' ' + to_string(month) + ' ' + to_string(day);
+		day = stoi(date_s.substr(6,2));
+		date_s = to_string(year) + ' ' + date_s.substr(4,2) + ' ' + date_s.substr(6,2);
 
 		// NOTE: to convert string to int use stoi
 		//       to convert string to double use stod
@@ -165,7 +166,7 @@ int main(void)
 		if (tmax != -9999 && tmin != -9999 && prcp != -9999 && station.find("D") != string::npos)
 		{
 			outfile << dataline << endl;
-			column5file << setw(50) << left << centerText(station, 50) << right << setw(10) << date_s << left << "     " << 
+			column5file << setw(52) << left << centerText(station, 50) << right << setw(10) << date_s << left << "     " << 
 			fixed << setprecision(2)<< setw(7) << prcp << setw(9) << tmax << setw(10) << tmin <<  endl;
 		}
 		else
@@ -245,4 +246,20 @@ string centerText(int text, int size)
 	centeredString += text;
 
 	return centeredString;
+}
+
+// function that pads my numbers. I brought this in because
+// the date_s variable doesn't retain some information that
+// is needed for proper formatting
+string paddingZerosStr(int number, int padding)
+{ 
+  string newStr = "";
+  for (int i = 0; i < padding; i++)
+  {
+    newStr += '0';
+  }
+  newStr += to_string(number);
+  
+
+  return newStr;
 }
