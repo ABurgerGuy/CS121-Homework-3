@@ -17,6 +17,7 @@
 using namespace std;
 
 string centerText(string text, int size);
+string centerText(int text, int size);
 
 int main(void)
 {
@@ -32,6 +33,10 @@ int main(void)
 	unsigned int pos_tmax = 0;
 	unsigned int pos_tmin = 0;
 	unsigned int pos_prcp = 0;
+	int year;
+	int month;
+	int day;
+	
 
 	float tmax = 0, tmin = 0, prcp = 0; // Real types for temps
 	int bad_records = 0;				// Count the records with bad data for tmax and tmin
@@ -121,7 +126,8 @@ int main(void)
 
 	//TODO: implement what will be filled on first line of the new file
 	cout << "Column File Line 1: " << setw(50) << centerText("STATION", 50) << setw(10) << centerText("DATE", 8) << endl;
-	column5file << left << setw(50) << centerText("STATION", 50) << setw(10) << centerText("DATE", 8) << endl;
+	column5file << left << setw(50) << centerText("STATION", 50) << setw(13) << centerText("DATE", 14) <<
+	setw(9) << centerText("PRCP",8) << setw(9) << centerText("TMAX",4) << setw(10) << centerText("TMIN",5) << endl;
 
 	cout << "Read the second line from the file - dashes. " << endl;
 	getline(infile, dataline);
@@ -146,16 +152,21 @@ int main(void)
 		tmax = stof(tmax_s); // Convert string tmax_s to float tmax
 		tmin = stof(tmin_s); // Convert string tman_s to float tmin
 		prcp = stof(prcp_s);
+		year = stoi(date_s.substr(0,4));
+		month = stoi(date_s.substr(4,2));
+		day = stoi(date_s.substr(7,2));
+		date_s = to_string(year) + ' ' + to_string(month) + ' ' + to_string(day);
 
 		// NOTE: to convert string to int use stoi
 		//       to convert string to double use stod
 
 		// Test for bad data flag. If good data then write to new file.
 
-		if (tmax != -9999 && tmin != -9999 && prcp != -9999)
+		if (tmax != -9999 && tmin != -9999 && prcp != -9999 && station.find("D") != string::npos)
 		{
 			outfile << dataline << endl;
-			column5file << setw(50) << left << centerText(station, 50) << date_s << endl;
+			column5file << setw(50) << left << centerText(station, 50) << right << setw(10) << date_s << left << "     " << 
+			fixed << setprecision(2)<< setw(7) << prcp << setw(9) << tmax << setw(10) << tmin <<  endl;
 		}
 		else
 			bad_records++;
@@ -196,6 +207,38 @@ string centerText(string text, int size)
 	}
 
 	for (int j = 0; j < (centerSize - (text.length() / sizeof(text[0]))) / 2; j++)
+	{
+		centeredString += " ";
+	}
+	centeredString += text;
+
+	return centeredString;
+}
+
+
+
+//overload version of the above function that takes in integers instead of strings and does the same thing
+
+string centerText(int text, int size)
+{
+	string centeredString = "";
+	bool charFound = false;
+	int centerSize = size;
+
+	for (int i = 0; i < centerSize; i++)
+	{
+		if (to_string(text)[i] != ' ')
+		{
+			charFound = true;
+		}
+		if (charFound == true)
+		{
+			text = text;
+			break;
+		}
+	}
+
+	for (int j = 0; j < (centerSize - (to_string(text).length() / sizeof(to_string(text)[0]))) / 2; j++)
 	{
 		centeredString += " ";
 	}
