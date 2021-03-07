@@ -24,6 +24,7 @@ int main(void)
 {
 	// Variables
 	string centeredStation = "";
+	string desiredStation = "";
 	string dataline = "";
 	string station = "";
 	string tmax_s = "", tmin_s = "", prcp_s = "";
@@ -37,7 +38,6 @@ int main(void)
 	int year;
 	int month;
 	int day;
-	
 
 	float tmax = 0, tmin = 0, prcp = 0; // Real types for temps
 	int bad_records = 0;				// Count the records with bad data for tmax and tmin
@@ -127,13 +127,23 @@ int main(void)
 
 	//TODO: implement what will be filled on first line of the new file
 	cout << "Column File Line 1: " << setw(50) << centerText("STATION", 50) << setw(10) << centerText("DATE", 8) << endl;
-	column5file << left << setw(52) << centerText("STATION", 50) << setw(13) << centerText("DATE", 10) <<
-	setw(9) << centerText("PRCP",8) << setw(9) << centerText("TMAX",4) << setw(10) << centerText("TMIN",5) << endl;
+	column5file << left << setw(52) << centerText("STATION", 50) << setw(13) << centerText("DATE", 10) << setw(9) << centerText("PRCP", 8) << setw(9) << centerText("TMAX", 4) << setw(10) << centerText("TMIN", 5) << endl;
 
 	cout << "Read the second line from the file - dashes. " << endl;
 	getline(infile, dataline);
 	outfile << dataline << endl;
 	cout << "Line 2: " << dataline << endl;
+
+	/*
+	TODO: implement user input functionality for: 
+		* Total Precipitation over a range of dates
+		* Total Precipitation from all stations for a single day
+		* Total Precipitation by Station for March
+		* Temperature Extremes and Average by Station
+		* Temperature Extremes and Average by Station over a range of dates
+	*/
+	cout << "enter your desired station : ";
+	getline(cin, desiredStation);
 
 	while (!infile.eof())
 	{
@@ -153,21 +163,20 @@ int main(void)
 		tmax = stof(tmax_s); // Convert string tmax_s to float tmax
 		tmin = stof(tmin_s); // Convert string tman_s to float tmin
 		prcp = stof(prcp_s);
-		year = stoi(date_s.substr(0,4));
-		month = stoi(date_s.substr(4,2));
-		day = stoi(date_s.substr(6,2));
-		date_s = to_string(year) + ' ' + date_s.substr(4,2) + ' ' + date_s.substr(6,2);
+		year = stoi(date_s.substr(0, 4));
+		month = stoi(date_s.substr(4, 2));
+		day = stoi(date_s.substr(6, 2));
+		date_s = to_string(year) + ' ' + date_s.substr(4, 2) + ' ' + date_s.substr(6, 2);
 
 		// NOTE: to convert string to int use stoi
 		//       to convert string to double use stod
 
 		// Test for bad data flag. If good data then write to new file.
 
-		if (tmax != -9999 && tmin != -9999 && prcp != -9999 && station.find("D") != string::npos)
+		if (tmax != -9999 && tmin != -9999 && prcp != -9999 && station.find(desiredStation) != string::npos)
 		{
 			outfile << dataline << endl;
-			column5file << setw(52) << left << centerText(station, 50) << right << setw(10) << date_s << left << "     " << 
-			fixed << setprecision(2)<< setw(7) << prcp << setw(9) << tmax << setw(10) << tmin <<  endl;
+			column5file << setw(52) << left << centerText(station, 50) << right << setw(10) << date_s << left << "     " << fixed << setprecision(2) << setw(7) << prcp << setw(9) << tmax << setw(10) << tmin << endl;
 		}
 		else
 			bad_records++;
@@ -216,8 +225,6 @@ string centerText(string text, int size)
 	return centeredString;
 }
 
-
-
 //overload version of the above function that takes in integers instead of strings and does the same thing
 
 string centerText(int text, int size)
@@ -252,14 +259,12 @@ string centerText(int text, int size)
 // the date_s variable doesn't retain some information that
 // is needed for proper formatting
 string paddingZerosStr(int number, int padding)
-{ 
-  string newStr = "";
-  for (int i = 0; i < padding; i++)
-  {
-    newStr += '0';
-  }
-  newStr += to_string(number);
-  
-
-  return newStr;
+{
+	string newStr = "";
+	for (int i = 0; i < padding; i++)
+	{
+		newStr += '0';
+	}
+	newStr += to_string(number);
+	return newStr;
 }
