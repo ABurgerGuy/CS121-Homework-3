@@ -31,34 +31,3 @@ GHCND:USW00003856 HUNTSVILLE INTERNATIONAL AIRPORT JONES FIELD AL US 20180328 -9
 GHCND:USW00003856 HUNTSVILLE INTERNATIONAL AIRPORT JONES FIELD AL US 20180329 -9999    -9999    0.85     0.0      0.0      70       55       7.4      
 GHCND:USW00003856 HUNTSVILLE INTERNATIONAL AIRPORT JONES FIELD AL US 20180330 -9999    -9999    0.00     0.0      0.0      62       42       8.3      
 GHCND:USW00003856 HUNTSVILLE INTERNATIONAL AIRPORT JONES FIELD AL US 20180331 -9999    -9999    0.00     0.0      0.0      69       37       5.8      
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180301 -9999    -9999    0.43     0.0      0.0      65       47       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180302 -9999    -9999    0.00     0.0      0.0      56       40       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180303 -9999    -9999    0.00     0.0      0.0      61       32       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180304 -9999    -9999    0.00     0.0      0.0      69       32       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180305 -9999    -9999    0.14     0.0      0.0      58       47       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180306 -9999    -9999    0.02     0.0      0.0      65       47       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180307 -9999    -9999    0.00     0.0      0.0      47       32       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180308 -9999    -9999    0.00     0.0      0.0      47       28       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180309 -9999    -9999    0.00     0.0      0.0      63       24       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180310 -9999    -9999    0.82     0.0      0.0      56       48       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180311 -9999    -9999    0.38     0.0      0.0      59       38       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180312 -9999    -9999    0.00     0.0      0.0      52       35       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180313 -9999    -9999    0.00     0.0      0.0      54       27       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180314 -9999    -9999    0.00     0.0      0.0      49       28       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180315 -9999    -9999    0.00     0.0      0.0      69       26       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180316 -9999    -9999    0.00     0.0      0.0      69       39       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180317 -9999    -9999    0.14     0.0      0.0      79       58       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180318 -9999    -9999    0.09     0.0      0.0      63       47       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180319 -9999    -9999    0.26     0.0      0.0      69       52       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180320 -9999    -9999    0.00     0.0      0.0      55       37       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180321 -9999    -9999    0.00     0.0      0.0      53       33       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180322 -9999    -9999    0.00     0.0      0.0      58       28       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180323 -9999    -9999    0.01     0.0      0.0      63       36       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180324 -9999    -9999    0.00     0.0      0.0      69       52       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180325 -9999    -9999    0.16     0.0      0.0      68       51       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180326 -9999    -9999    0.00     0.0      0.0      55       48       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180327 -9999    -9999    0.00     0.0      0.0      64       46       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180328 -9999    -9999    0.00     0.0      0.0      72       58       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180329 -9999    -9999    0.97     0.0      0.0      68       54       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180330 -9999    -9999    0.00     0.0      0.0      60       40       -9999    
-GHCND:USC00017674                         SOUTHWEST HUNTSVILLE AL US 20180331 -9999    -9999    0.00     0.0      0.0      71       34       -9999    

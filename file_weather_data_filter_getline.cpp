@@ -38,6 +38,9 @@ int main(void)
 	int year;
 	int month;
 	int day;
+	int newMax = 0;
+	int newMin = 900;
+	float totalPrecip = 0;
 
 	float tmax = 0, tmin = 0, prcp = 0; // Real types for temps
 	int bad_records = 0;				// Count the records with bad data for tmax and tmin
@@ -177,6 +180,18 @@ int main(void)
 		{
 			outfile << dataline << endl;
 			column5file << setw(52) << left << centerText(station, 50) << right << setw(10) << date_s << left << "     " << fixed << setprecision(2) << setw(7) << prcp << setw(9) << tmax << setw(10) << tmin << endl;
+
+			totalPrecip += prcp;
+
+			if (tmax >= newMax)
+			{
+				newMax = tmax;
+			}
+
+			if (tmin <= newMin)
+			{
+				newMin = tmin;
+			}
 		}
 		else
 			bad_records++;
@@ -191,6 +206,9 @@ int main(void)
 	cout << "There were " << bad_records << " bad records for tmax and tmin." << endl;
 
 	cout << "\n\n";
+	cout << "Max Tempurature across all valid data points in " << desiredStation << " : " << newMax << endl;
+	cout << "Min Tempurature across all valid data points in " << desiredStation << " : " << newMin << endl;
+	cout << "Total precipitation across all valid data points in " << desiredStation << " : " << totalPrecip << endl;
 	//system("pause");
 	return 0;
 }
