@@ -6,40 +6,99 @@
 using namespace std;
 
 string paddingZerosStr(int number, int padding);
+bool hasWordInIt(string strArr[200],string checkStr);
 
 int main (){
-    // string anotherStr = "test";
-    // cout << anotherStr.length()/sizeof(anotherStr[0]) << endl;
+string names[200] = {"GREENSBORO 2 WNW AL US","GREENSBORO 2 WNW AL US","MUSCLE SHOALS 2 N AL US","MUSCLE SHOALS 2 N AL US","raul","hilda","ron","ron","ron","jake"};
+string temp[200];
+int place = 0;
+        // cout << "Run 1" << endl;
+        
+        // for (int i = 0; i < sizeof(names)/sizeof(names[0]); i++)
+        // {
+        //   cout << names[i] << endl;
+        // }
 
-    // string testString = "STATION";
-    // cout << testString << endl;
-    // cout << testString.size()/sizeof(testString[0]) << endl;
-    // int qtyOfLines = 50;      
-    //     for(int j=0; j<(qtyOfLines-(testString.size()/sizeof(testString[0])))/2; j++){
-    //       cout << " ";
-    //     }
-    //       cout << testString; 
-    //     for (int j = 0; j < ((qtyOfLines-(testString.size()/sizeof(testString[0])))/2)+1; j++)
-    //     {
-    //       cout << "*";
-    //     }
+        // cout << "Run 2" << endl;
+
+        // for (int i = 0; i < sizeof(names)/sizeof(names[0]); i++)
+        // {
+        //   for (int j = i+1; j < sizeof(names)/sizeof(names[0]); j++)
+        //   {
+        //     if (names[i] != names[j])
+        //     {
+        //       cout << names[i] << endl;
+        //     }
+            
+        //   }
           
-  cout << paddingZerosStr(5,1) << endl;
+        // }
+
+
+        cout << "Run 3" << endl;
+
+        for (int i = 0; i < sizeof(names)/sizeof(names[0]); i++)
+        {
+
+            if (!hasWordInIt(temp,names[i]))
+            {
+             cout << names[i] << " " << i << " " << !hasWordInIt(temp,names[i]) << endl;
+             
+            }
+            //cout << setw(8) << left << names[i] << names[j] << endl;
+            
+          
+          
+        }
+
+    
+
+
+// int size = sizeof(names)/sizeof(names[0]);
+
+//     for(int i=0;i<size;++i)
+// 		  for(int j=i+1;j<size;)
+// 		  {
+// 			  if(names[i]==names[j])
+// 			  {
+// 				  for(int k=j;k<(size)-1;++k)
+// 					  names[k]=names[k+1];
+					
+// 				  --size;
+// 			  }
+// 			  else
+// 				  ++j;
+// 		  }
+//       cout << "Run 2" << endl;
+//       for (int i = 0; i < size; i++)
+//       {
+//         cout << names[i] << endl;
+//       }
+
+
+
+      
+
+        // if (/* condition */)
+        //{
+          /* code */
+        //}
+        
 
         return 0;
 }
 //           BANKHEAD LOCK AND DAM AL US************
 //           BANKHEAD LOCK AND DAM AL US************
 
-string paddingZerosStr(int number, int padding)
-{ 
-  string newStr = "";
-  for (int i = 0; i < padding; i++)
+bool hasWordInIt(string strArr[200],string checkStr)
+{
+  for (int i = 0; i < 200; i++)
   {
-    newStr += '0';
+    if (strArr[i] == checkStr)
+    {
+      return true;
+    }
+    
   }
-  newStr += to_string(number);
-  
-
-  return newStr;
+  return false;
 }
